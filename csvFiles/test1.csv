@@ -1,0 +1,41 @@
+Institution code (UKPRN),Institution name,Institution sort order,Main panel,Unit of assessment number,Unit of assessment name,Multiple submission letter,Multiple submission name,Joint submission,Profile,FTE Category A staff submitted,4*,3*,2*,1*,unclassified
+10007759,Aston University,20,B,11,Computer Science and Informatics, ,,,Outputs,18.2,11.8,41.1,47.1,0,0
+10007759,Aston University,20,B,11,Computer Science and Informatics, ,,,Impact,18.2,40,60,0,0,0
+10007759,Aston University,20,B,11,Computer Science and Informatics, ,,,Environment,18.2,0,45,55,0,0
+10007759,Aston University,20,B,11,Computer Science and Informatics, ,,,Overall,18.2,16,45,39,0,0
+10007759,Aston University,20,B,13,"Electrical and Electronic Engineering, Metallurgy and Materials", ,,,Outputs,24,16.9,54.2,28.9,0,0
+10007759,Aston University,20,B,13,"Electrical and Electronic Engineering, Metallurgy and Materials", ,,,Impact,24,26.7,73.3,0,0,0
+10007759,Aston University,20,B,13,"Electrical and Electronic Engineering, Metallurgy and Materials", ,,,Environment,24,0,35,55,10,0
+10007759,Aston University,20,B,13,"Electrical and Electronic Engineering, Metallurgy and Materials", ,,,Overall,24,16,55,28,1,0
+10007790,University of Edinburgh,6730,B,11,Computer Science and Informatics, ,,,Outputs,94.85,33.4,50.1,14.8,1.7,0
+10007790,University of Edinburgh,6730,B,11,Computer Science and Informatics, ,,,Impact,94.85,48,32,4,8,8
+10007790,University of Edinburgh,6730,B,11,Computer Science and Informatics, ,,,Environment,94.85,60,40,0,0,0
+10007790,University of Edinburgh,6730,B,11,Computer Science and Informatics, ,,,Overall,94.85,40,45,11,2,2
+10007790,University of Edinburgh,6730,B,15,General Engineering, ,,(joint submission with Heriot-Watt University),Outputs,91.8,21,70,8.4,0.3,0.3
+10007790,University of Edinburgh,6730,B,15,General Engineering, ,,(joint submission with Heriot-Watt University),Impact,91.8,60,38.1,1.9,0,0
+10007790,University of Edinburgh,6730,B,15,General Engineering, ,,(joint submission with Heriot-Watt University),Environment,91.8,70,30,0,0,0
+10007790,University of Edinburgh,6730,B,15,General Engineering, ,,(joint submission with Heriot-Watt University),Overall,91.8,36,58,6,0,0
+10007794,University of Glasgow,6760,B,11,Computer Science and Informatics, ,,,Outputs,41.6,23.3,52.7,20.6,3.4,0
+10007794,University of Glasgow,6760,B,11,Computer Science and Informatics, ,,,Impact,41.6,68,32,0,0,0
+10007794,University of Glasgow,6760,B,11,Computer Science and Informatics, ,,,Environment,41.6,50,50,0,0,0
+10007794,University of Glasgow,6760,B,11,Computer Science and Informatics, ,,,Overall,41.6,36,48,14,2,0
+10007794,University of Glasgow,6760,B,15,General Engineering, ,,,Outputs,84,22.5,73.3,3.8,0.4,0
+10007794,University of Glasgow,6760,B,15,General Engineering, ,,,Impact,84,51.1,40,8.9,0,0
+10007794,University of Glasgow,6760,B,15,General Engineering, ,,,Environment,84,35,65,0,0,0
+10007794,University of Glasgow,6760,B,15,General Engineering, ,,,Overall,84,30,65,5,0,0
+10007856,Aberystwyth University,7060,B,11,Computer Science and Informatics, ,,,Outputs,24.8,25.3,49.4,22.9,2.4,0
+10007856,Aberystwyth University,7060,B,11,Computer Science and Informatics, ,,,Impact,24.8,23.3,76.7,0,0,0
+10007856,Aberystwyth University,7060,B,11,Computer Science and Informatics, ,,,Environment,24.8,0,35,65,0,0
+10007856,Aberystwyth University,7060,B,11,Computer Science and Informatics, ,,,Overall,24.8,21,53,24,2,0
+10007856,Aberystwyth University,7060,C,17,"Geography, Environmental Studies and Archaeology", ,,,Outputs,38.93,18.9,47.2,31.5,1.6,0.8
+10007856,Aberystwyth University,7060,C,17,"Geography, Environmental Studies and Archaeology", ,,,Impact,38.93,42,58,0,0,0
+10007856,Aberystwyth University,7060,C,17,"Geography, Environmental Studies and Archaeology", ,,,Environment,38.93,50,50,0,0,0
+10007856,Aberystwyth University,7060,C,17,"Geography, Environmental Studies and Archaeology", ,,,Overall,38.93,28,50,20,1,1
+10005343,Queen's University Belfast,7600,B,11,Computer Science and Informatics, ,,,Outputs,21.2,12.5,56.7,27,3.8,0
+10005343,Queen's University Belfast,7600,B,11,Computer Science and Informatics, ,,,Impact,21.2,13.3,86.7,0,0,0
+10005343,Queen's University Belfast,7600,B,11,Computer Science and Informatics, ,,,Environment,21.2,10,40,50,0,0
+10005343,Queen's University Belfast,7600,B,11,Computer Science and Informatics, ,,,Overall,21.2,12,60,26,2,0
+10005343,Queen's University Belfast,7600,B,12,"Aeronautical, Mechanical, Chemical and Manufacturing Engineering", ,,,Outputs,49.5,10.5,74.8,14.7,0,0
+10005343,Queen's University Belfast,7600,B,12,"Aeronautical, Mechanical, Chemical and Manufacturing Engineering", ,,,Impact,49.5,13.3,80,6.7,0,0
+10005343,Queen's University Belfast,7600,B,12,"Aeronautical, Mechanical, Chemical and Manufacturing Engineering", ,,,Environment,49.5,10,80,10,0,0
+10005343,Queen's University Belfast,7600,B,12,"Aeronautical, Mechanical, Chemical and Manufacturing Engineering", ,,,Overall,49.5,11,77,12,0,0

@@ -1,0 +1,481 @@
+<!-- – Author:MHD Rateb Alissa
+– Date: 17/11/2017
+– References :		/* buttons from https://codepen.io/sethabbott/pen/FtuLz */
+– Overall function of the code: html page of the dashboard
+– The percentage of code written by the student ‘author’:90%
+– The percentage of code taken from course examples:10% -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<script type="text/javascript" src="layouts/PieChart.js"></script>
+	<script type="text/javascript" src="layouts/map.js"></script>
+	<script type="text/javascript" src="layouts/tree.js"></script>
+	<script type="text/javascript" src="layouts/barchart.js"></script>
+	<script type="text/javascript" src="layouts/pack.js"></script>
+	<script type="text/javascript" src="layouts/sankey.js"></script>
+	<script type="text/javascript" src="mangersfiles/layoutsManager.js"></script>
+	<script type="text/javascript" src="mangersfiles/datamanager.js"></script>
+	<script type="text/javascript" src="mangersfiles/centralTable.js"></script>
+	<script src="https://d3js.org/d3.v4.min.js"></script>
+	<script src="http://d3js.org/topojson.v1.min.js"></script>
+	<script src="https://unpkg.com/d3-sankey@0.6"></script>
+	<style>
+		text {
+			font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+			font-size: 10px;
+		}
+
+		.piechart text {
+			font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+			font-size: 20px;
+			pointer-events: none;
+		}
+
+		.classCountry.SCT {
+			fill: thistle;
+		}
+
+		.classCountry.WLS {
+			fill: lightsteelblue;
+		}
+
+		.classCountry.NIR {
+			fill: paleturquoise;
+		}
+
+		.classCountry.ENG {
+			fill: pink;
+		}
+
+		.classCountry.IRL {
+			fill: lightgrey;
+		}
+
+		.classTown text {
+			fill: grey;
+		}
+
+		.classTown circle {
+			stroke: #808080;
+			fill: #087C0E;
+		}
+
+
+
+		.classCountry.highlight {
+			fill: #FF6600;
+		}
+
+		.classCountry.black {
+			background: #00000E;
+			stroke: #000011;
+			fill: #01010A;
+		}
+
+
+		* {
+			margin: 0;
+			padding: 0;
+			-moz-box-sizing: border-box;
+			-o-box-sizing: border-box;
+			-webkit-box-sizing: border-box;
+			box-sizing: border-box;
+		}
+
+		body {
+			width: 100%;
+			height: 100%;
+			font-family: "helvetica neue", helvetica, arial, sans-serif;
+			font-size: 20px;
+		}
+
+		ul {
+			margin: 0px auto;
+			text-align: center;
+		}
+
+		li {
+			margin: 30px 30px;
+			list-style: none;
+			position: relative;
+			display: inline-block;
+			width: 100px;
+			height: 100px;
+		}
+
+		@-moz-keyframes rotate {
+			0% {
+				transform: rotate(0deg);
+			}
+			100% {
+				transform: rotate(-360deg);
+			}
+		}
+
+		@-webkit-keyframes rotate {
+			0% {
+				transform: rotate(0deg);
+			}
+			100% {
+				transform: rotate(-360deg);
+			}
+		}
+
+		@-o-keyframes rotate {
+			0% {
+				transform: rotate(0deg);
+			}
+			100% {
+				transform: rotate(-360deg);
+			}
+		}
+
+		@keyframes rotate {
+			0% {
+				transform: rotate(0deg);
+			}
+			100% {
+				transform: rotate(-360deg);
+			}
+		}
+
+		.round {
+			display: block;
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			padding-top: 30px;
+			text-decoration: none;
+			text-align: center;
+			font-size: 25px;
+			text-shadow: 0 1px 0 rgba(255, 255, 255, .7);
+			letter-spacing: -.065em;
+			font-family: "Hammersmith One", sans-serif;
+			-webkit-transition: all .25s ease-in-out;
+			-o-transition: all .25s ease-in-out;
+			-moz-transition: all .25s ease-in-out;
+			transition: all .25s ease-in-out;
+			box-shadow: 2px 2px 7px rgba(0, 0, 0, .2);
+			border-radius: 300px;
+			z-index: 1;
+			border-width: 4px;
+			border-style: solid;
+		}
+
+		.round:hover {
+			width: 130%;
+			height: 130%;
+			left: -15%;
+			top: -15%;
+			font-size: 33px;
+			padding-top: 38px;
+			-webkit-box-shadow: 5px 5px 10px rgba(0, 0, 0, .3);
+			-o-box-shadow: 5px 5px 10px rgba(0, 0, 0, .3);
+			-moz-box-shadow: 5px 5px 10px rgba(0, 0, 0, .3);
+			box-shadow: 5px 5px 10px rgba(0, 0, 0, .3);
+			z-index: 2;
+			border-size: 10px;
+			-webkit-transform: rotate(-360deg);
+			-moz-transform: rotate(-360deg);
+			-o-transform: rotate(-360deg);
+			transform: rotate(-360deg);
+		}
+
+		a.red {
+			background-color: rgba(239, 57, 50, 1);
+			color: rgba(133, 32, 28, 1);
+			border-color: rgba(133, 32, 28, .2);
+		}
+
+		a.red:hover {
+			color: rgba(239, 57, 50, 1);
+		}
+
+		a.green {
+			background-color: rgba(1, 151, 171, 1);
+			color: rgba(0, 63, 71, 1);
+			border-color: rgba(0, 63, 71, .2);
+		}
+
+		a.green:hover {
+			color: rgba(1, 151, 171, 1);
+		}
+
+		a.yellow {
+			background-color: rgba(252, 227, 1, 1);
+			color: rgba(153, 38, 0, 1);
+			border-color: rgba(153, 38, 0, .2);
+		}
+
+		a.yellow:hover {
+			color: rgba(252, 227, 1, 1);
+		}
+
+		.round span.round {
+			display: block;
+			opacity: 0;
+			-webkit-transition: all .5s ease-in-out;
+			-moz-transition: all .5s ease-in-out;
+			-o-transition: all .5s ease-in-out;
+			transition: all .5s ease-in-out;
+			font-size: 1px;
+			border: none;
+			padding: 40% 20% 0 20%;
+			color: #fff;
+		}
+
+		.round span:hover {
+			opacity: .85;
+			font-size: 16px;
+			-webkit-text-shadow: 0 1px 1px rgba(0, 0, 0, .5);
+			-moz-text-shadow: 0 1px 1px rgba(0, 0, 0, .5);
+			-o-text-shadow: 0 1px 1px rgba(0, 0, 0, .5);
+			text-shadow: 0 1px 1px rgba(0, 0, 0, .5);
+		}
+
+		.green span {
+			background: rgba(0, 63, 71, .7);
+		}
+
+		.red span {
+			background: rgba(133, 32, 28, .7);
+		}
+
+		.yellow span {
+			background: rgba(161, 145, 0, .7);
+		}
+		/* tree css */
+
+		.classLink {
+			fill: none;
+			stroke: steelblue;
+			stroke-width: 1.5px;
+		}
+
+		.classNode text {
+			fill: steelblue;
+			font: 10px sans-serif;
+		}
+
+		.classNode circle {
+			stroke: steelblue;
+			fill: pink;
+			stroke-width: 1.5px;
+		}
+
+		.classNode {
+			cursor: pointer;
+		}
+		/* pack style */
+
+		.node {
+			cursor: pointer;
+		}
+
+		.node:hover {
+			stroke: #000;
+			stroke-width: 1.5px;
+		}
+
+		.node--leaf {
+			fill: white;
+		}
+
+		.label {
+			font: 11px "Helvetica Neue", Helvetica, Arial, sans-serif;
+			text-anchor: middle;
+			text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff, 0 -1px 0 #fff;
+		}
+
+		.label,
+		.node--root,
+		.node--leaf {
+			pointer-events: none;
+		}
+		/* sankey style */
+
+		.node rect {
+			cursor: move;
+			fill-opacity: .9;
+			shape-rendering: crispEdges;
+		}
+
+		.node text {
+			pointer-events: none;
+			/* text-shadow: 0 1px 0 rgba(255, 255, 255, 0.62); */
+			font-size: 20px;
+			color: #F0F0D8;
+		}
+
+		.link {
+			fill: none;
+			stroke: #000;
+			stroke-opacity: .2;
+		}
+
+		.link:hover {
+			stroke-opacity: .5;
+		}
+
+
+
+		ul {
+			position: absolute;
+			top: 0;
+			left: 1300px;
+		}
+
+		li {
+			float: left;
+			clear: left;
+		}
+		/* title style */
+
+		p#title1 {
+			position: absolute;
+			top: 25px;
+			left: 50px;
+		}
+
+		p#title2 {
+			position: absolute;
+			top: 250px;
+			left: 50px;
+		}
+
+		p#title3 {
+			position: absolute;
+			top: 500px;
+			left: 50px;
+		}
+
+		p#title4 {
+			position: absolute;
+			top: 70px;
+			left: 900px;
+			width: 400px
+		}
+
+		p#title5 {
+			position: absolute;
+			top: 700px;
+			left: 800px;
+			width: 800px
+		}
+
+		p#title5-2 {
+			position: absolute;
+			top: 680px;
+			left: 1000px;
+			width: 800px
+		}
+
+
+		p#title6 {
+			position: absolute;
+			top: 800px;
+			left: 100px;
+			width: 800px
+		}
+
+		p#title7 {
+			position: absolute;
+			top: 800px;
+			left: 1000px;
+			width: 1000px
+		}
+
+		p#title8 {
+			position: absolute;
+			top: 1550px;
+			left: 500px;
+			width: 800px
+		}
+
+		p#title9 {
+			position: absolute;
+			top: 25px;
+			left: 1000px;
+			width: 300px;
+			background-color: black;
+			color: white;
+			text-align: center;
+			border-radius: 50%;
+		}
+	</style>
+</head>
+
+<body>
+
+
+	<svg id="SVGId" width="1400" height="2850">
+		<ul>
+			<li><a onclick="chooseUser('research')" id="researchProfile" class="round green">User 1<span class="round">University Researchers</span></a></li>
+			<li><a onclick="chooseUser('management')" class="round red">User 2<span class="round">University management </span></a></li>
+			<li><a onclick="chooseUser('Collaborators')" class="round yellow">User 3<span class="round">Potential Industrial Collaborators</span></a></li>
+		</ul>
+		<!-- <div id="dashboard" ></div> -->
+	</svg>
+	<p id="title1">title1</p>
+	<p id="title2">title2 </p>
+	<p id="title3">title3</p>
+	<p id="title4">title4</p>
+	<p id="title5">title5</p>
+	<p id="title5-2">Bar for </p>
+	<p id="title6">title6</p>
+	<p id="title7">Map of UK's Universities</p>
+	<p id="title8">title8</p>
+	<p id="title9">title9</p>
+
+
+	<script type="text/javascript">
+		// var title1 = "title1"
+		// var title2 = "title2"
+		// var title3 = "title3"
+		// var title4 = "title4"
+		// var title5 = "title5"
+
+		var userType = 'research';
+
+
+		// APPEND VISUALISATION
+		var pie1 = piechart("#SVGId")
+			.pieCoor(300, 300);
+		var pie2 = piechart("#SVGId")
+			.pieCoor(300, 750);
+		var pie3 = piechart("#SVGId")
+			.pieCoor(300, 1250);
+		var bar1 = barchart("#SVGId");
+		var map1 = map("#SVGId");
+		var tree1 = tree("#SVGId");
+
+		var pack1 = pack("#SVGId");
+
+		var sankey1 = sankey("#SVGId");
+
+		//main dashbboard function
+		function chooseUser(user) {
+			userType = user;
+
+			document.getElementById("title9").innerText = "User Type is: " + userType;
+			//function to bring data from central table
+			getData(function (data) {
+				console.log(data);
+				//this function in layoutsMangaer to create the layouts
+				layouts(data);
+
+			})
+
+		}
+		chooseUser(userType);
+	</script>
+
+</body>
+
+</html>
