@@ -1,4 +1,4 @@
-# Dashboard
+# UK Universities Dashboard
 This is an interactive dashboard ([here](https://mohamadalissa.github.io/Dashboard/)) for the assessment of UK universities' research using using [d3.js](https://d3js.org/) and [Bootstrap CSS](https://getbootstrap.com/). <br />
 The selected dataset from REF 2014. REF 2014 is a quality assessment of UK universities' research comprising:<br />
 – 154 UK institutions. <br />
